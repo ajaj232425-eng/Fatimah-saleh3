@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>نتيجة الطفل</title>
 <style>
-body{body{
+body{
     font-family: Arial;
     text-align:center;
     padding:20px;
@@ -15,17 +15,7 @@ body{body{
     background-position: center;
     background-repeat: no-repeat;
 }
-    font-family: Arial, sans-serif;
-    text-align:center;
-    padding:20px;
-
-    /* الخلفية كصورة منفصلة */
-    background-image: url('child_backpack.png'); /* body {
-    background-image: url('child_backpack.png'); /* اسم الصورة كما في المستودع */
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: contain;
-}*/
+    font}*/
     background-repeat: no-repeat;
     background-position: top center;
     background-size: contain;
