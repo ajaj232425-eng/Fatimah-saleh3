@@ -10,7 +10,16 @@ body{
     text-align:center;
     padding:20px;
 
-    background-image: url("child.png");
+    background-image: url("IMG_4225.png"); /* عدلي الامتداد إذا jpg */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+    font-family: Arial;
+    text-align:center;
+    padding:20px;
+
+    background-image: url("IMG_4225.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
