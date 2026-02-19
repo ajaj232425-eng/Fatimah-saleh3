@@ -5,203 +5,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حساب عمر الطفل - إدارة تعليم نجران</title>
     <style>
-        /* إعدادات الخط والخلفية */
+        /* إعدادات الخلفية - تأكدي من الاتصال بالإنترنت لرؤية الصورة */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* صورة خلفية طفل بحقيبة وأزهار مع طبقة حماية للنصوص */
-            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
-                        url('https://img.freepik.com/free-photo/boy-with-backpack-flowers_23-2148210364.jpg'); 
+            
+            /* تم تغيير رابط الصورة هنا لرابط أكثر استقراراً */
+            background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), 
+                        url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1000&auto=format&fit=crop');
+            
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-repeat: no-repeat;
         }
 
-        .container {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             width: 90%;
-            max-width: 480px;
+            max-width: 500px;
             text-align: center;
-            border-top: 10px solid #1a5e37; /* لون أخضر رسمي */
+            border: 3px solid #1a5e37;
         }
 
-        /* تنسيق الرأس الجديد */
-        .header {
-            border-bottom: 2px solid #f0f0f0;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
+        /* الجزء العلوي (الرأس) */
+        .header-section {
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #1a5e37;
+            padding-bottom: 20px;
         }
-        .header img { 
-            width: 130px; 
-            margin-bottom: 10px; 
+        .header-section img {
+            width: 140px;
+            height: auto;
+            margin-bottom: 15px;
         }
-        .header h2 { 
-            color: #1a5e37; 
-            margin: 5px 0; 
-            font-size: 1.4em;
-        }
-        .header h3 { 
-            color: #444; 
-            margin: 5px 0; 
-            font-size: 1.1em;
-            font-weight: normal;
-        }
-
-        h1 {
+        .header-section h2 {
+            color: #1a5e37;
+            margin: 5px 0;
             font-size: 1.6em;
+        }
+        .header-section h3 {
             color: #2c3e50;
-            margin-bottom: 20px;
+            margin: 5px 0;
+            font-size: 1.2em;
+            font-weight: 500;
         }
 
-        .input-group {
-            background: #f9fbf9;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 1px solid #e0e0e0;
-        }
-        label { 
-            display: block; 
-            margin-bottom: 12px; 
-            font-weight: bold; 
+        /* مدخلات البيانات */
+        .content-section h1 {
             color: #333;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+        }
+        .date-input-container {
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1a5e37;
         }
         input[type="date"] {
-            padding: 12px;
-            width: 85%;
-            border: 2px solid #cbd5e0;
-            border-radius: 10px;
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #1a5e37;
+            border-radius: 15px;
             font-size: 18px;
-            text-align: center;
+            box-sizing: border-box;
             outline: none;
+            text-align: center;
         }
 
-        .btn-container {
+        /* الأزرار */
+        .buttons {
             display: flex;
-            gap: 12px;
-            justify-content: center;
+            gap: 15px;
         }
         button {
-            padding: 14px 25px;
-            font-size: 17px;
-            border-radius: 10px;
-            cursor: pointer;
-            border: none;
-            transition: 0.3s;
-            font-weight: bold;
             flex: 1;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .btn-calc { background-color: #27ae60; color: white; }
-        .btn-calc:hover { background-color: #1e8449; }
-        .btn-print { background-color: #2980b9; color: white; }
-        .btn-print:hover { background-color: #1f6391; }
+        .calc-btn { background: #27ae60; color: white; }
+        .calc-btn:hover { background: #219150; transform: scale(1.02); }
+        .print-btn { background: #2980b9; color: white; }
+        .print-btn:hover { background: #2471a3; transform: scale(1.02); }
 
-        #result {
+        /* نتيجة الحساب */
+        #result-box {
             margin-top: 25px;
             padding: 20px;
-            background-color: #e8f5e9;
-            border-radius: 12px;
-            border-right: 6px solid #27ae60;
+            background: #f0fdf4;
+            border-radius: 15px;
+            border: 2px solid #27ae60;
             display: none;
-            font-size: 1.1em;
+            color: #1a5e37;
+            font-size: 1.2em;
             line-height: 1.6;
-            color: #1b5e20;
         }
 
-        /* تنسيق التذييل المطلوب */
-        .footer {
-            margin-top: 35px;
+        /* الجزء السفلي (التذييل) */
+        .footer-section {
+            margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid #eee;
-            color: #555;
-            font-size: 1em;
-        }
-        .footer strong {
-            display: block;
-            margin-top: 8px;
-            color: #1a5e37;
             font-size: 1.1em;
+            color: #444;
+        }
+        .footer-section strong {
+            color: #1a5e37;
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2em;
         }
 
+        /* عند الطباعة */
         @media print {
             body { background: white !important; }
-            .container { box-shadow: none; border: 1px solid #ccc; }
+            .main-card { border: 1px solid #000; box-shadow: none; }
             button { display: none; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Ministry_of_Education_Saudi_Arabia_Logo.svg/512px-Ministry_of_Education_Saudi_Arabia_Logo.svg.png" alt="شعار وزارة التعليم">
+<div class="main-card">
+    <div class="header-section">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Ministry_of_Education_Saudi_Arabia_Logo.svg/512px-Ministry_of_Education_Saudi_Arabia_Logo.svg.png" alt="وزارة التعليم">
         <h2>وزارة التعليم</h2>
         <h3>إدارة التعليم بنجران</h3>
     </div>
 
-    <h1>حساب عمر الطفل</h1>
-    
-    <div class="input-group">
-        <label>يرجى اختيار تاريخ ميلاد الطفل:</label>
-        <input type="date" id="birth_date">
+    <div class="content-section">
+        <h1>حساب عمر الطفل</h1>
+        
+        <div class="date-input-container">
+            <label>اختر تاريخ ميلاد الطفل:</label>
+            <input type="date" id="dob_input">
+        </div>
+
+        <div class="buttons">
+            <button class="calc-btn" onclick="processAge()">عرض النتيجة</button>
+            <button class="print-btn" onclick="window.print()">طباعة</button>
+        </div>
+
+        <div id="result-box"></div>
     </div>
 
-    <div class="btn-container">
-        <button class="btn-calc" onclick="calculateAge()">عرض النتيجة</button>
-        <button class="btn-print" onclick="window.print()">🖨️ طباعة</button>
-    </div>
-
-    <div id="result"></div>
-
-    <div class="footer">
+    <div class="footer-section">
         المديرة ومصممة الموقع:
         <strong>فاطمه صالح آل بحري</strong>
     </div>
 </div>
 
 <script>
-    function calculateAge() {
-        const birthValue = document.getElementById('birth_date').value;
-        const resultDiv = document.getElementById('result');
+    function processAge() {
+        const val = document.getElementById('dob_input').value;
+        const res = document.getElementById('result-box');
         
-        if (!birthValue) {
-            alert("فضلاً، اختر تاريخ ميلاد الطفل");
+        if (!val) {
+            alert("لطفاً، حدد تاريخ الميلاد أولاً");
             return;
         }
 
-        const birthDate = new Date(birthValue);
+        const bDate = new Date(val);
         const today = new Date();
         
-        let years = today.getFullYear() - birthDate.getFullYear();
-        let months = today.getMonth() - birthDate.getMonth();
+        let y = today.getFullYear() - bDate.getFullYear();
+        let m = today.getMonth() - bDate.getMonth();
 
-        if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
-            years--;
-            months += 12;
+        if (m < 0 || (m === 0 && today.getDate() < bDate.getDate())) {
+            y--;
+            m += 12;
         }
 
-        let level = "";
-        if (years < 3) level = "دون سن القبول النظامي";
-        else if (years == 3) level = "المستوى الأول (روضة 1)";
-        else if (years == 4) level = "المستوى الثاني (روضة 2)";
-        else if (years == 5) level = "المستوى الثالث (روضة 3)";
-        else level = "مؤهل للمرحلة الابتدائية";
+        let stage = "";
+        if (y < 3) stage = "دون سن القبول";
+        else if (y == 3) stage = "المستوى الأول (روضة 1)";
+        else if (y == 4) stage = "المستوى الثاني (روضة 2)";
+        else if (y == 5) stage = "المستوى الثالث (روضة 3)";
+        else stage = "مؤهل للقبول بالصف الأول الابتدائي";
 
-        resultDiv.style.display = "block";
-        resultDiv.innerHTML = `
-            <strong>النتيجة المستخلصة:</strong><br>
-            عمر الطفل الآن: ${years} سنوات و ${months} أشهر<br>
-            المرحلة المستحقة: ${level}
-        `;
+        res.style.display = "block";
+        res.innerHTML = `عمر الطفل: ${y} سنوات و ${m} شهر<br>المرحلة: <b>${stage}</b>`;
     }
 </script>
 
